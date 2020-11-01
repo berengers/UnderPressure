@@ -1,0 +1,14 @@
+{
+  "name": "underpressure",
+  "version": "0.1.0",
+  "description": "![infrastructure schema](infra.png)",
+  "main": "index.js",
+  "scripts": {
+    "startStack": "docker-compose -f docker-compose.stack.yaml up -d",
+    "startServer": "cd ./server && node fixtures.js && nodemon app.js",
+    "stopStack": "docker-compose -f docker-compose.stack.yaml down",
+    "restartStack": "npm run stopStack && npm run startStack"
+  },
+  "author": "",
+  "license": "ISC"
+}

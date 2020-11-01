@@ -15,9 +15,8 @@ docker-compose -f docker-compose.stack.yaml -f docker-compose.app.yaml up -d
 docker-compose -f docker-compose.stack.yaml up -d
 
 ## run server in dev mode
-cd server
-npm start
-npm run fixtures
+npm run startStack
+npm run startServer
 
 ## run client in dev mode
 cd client
