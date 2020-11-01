@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  server:
+    build: ./server
+    restart: always
+    network_mode: host
+    init: true
+    environment:
+      - PORT=4000
+      - DB=postgres://postgres:postgres@127.0.0.1:5432/postgres
+
+  # client:
+  #   build: ./client
+  #   restart: always
+  #   network_mode: host

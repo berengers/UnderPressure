@@ -1,0 +1,11 @@
+graph TD
+  A(Client)
+  B(Nginx Load Balancer<br/>localhost:8080)
+  C(Nodejs Server<br/>localhost:4000)
+  D(Nginx Static Server<br/>localhost:3000)
+  E(Postgresql<br/>localhost:5432)
+
+  A --> B
+  B --> | /api | C
+  B --> | / | D
+  C --> E
