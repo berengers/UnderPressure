@@ -12,8 +12,6 @@ docker-compose -f docker-compose.stack.yaml -f docker-compose.app.yaml up -d
 ## Dev workflow
 
 ```sh
-docker-compose -f docker-compose.stack.yaml up -d
-
 ## run server in dev mode
 npm run startStack
 npm run startServer
