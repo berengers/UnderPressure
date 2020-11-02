@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
 function App() {
-  return (
-    <div className="App">
-      
-    </div>
-  );
+  const a = (value: number) => {
+    return value
+  }
+
+  return <div className="App">ccccddddd</div>
 }
 
-export default App;
+export default App
