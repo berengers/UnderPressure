@@ -8,34 +8,18 @@ const users = [
 
 const tests = [
   {
-    testId: 1,
-    asserts: 'asserts(4)',
-    code: 'function (value) {\n\n\n}',
-    instructions: 'You have to return double value',
     name: 'double',
     userId: 1
   },
   {
-    testId: 1,
-    asserts: 'asserts(4)',
-    code: 'function (value) {\n\n\n}',
-    instructions: 'You have to return double value',
     name: 'square',
     userId: 1
   },
   {
-    testId: 1,
-    asserts: 'asserts(4)',
-    code: 'function (value) {\n\n\n}',
-    instructions: 'You have to return double value',
     name: 'square',
     userId: 1
   },
   {
-    testId: 1,
-    asserts: 'asserts(4)',
-    code: 'function (value) {\n\n\n}',
-    instructions: 'You have to return double value',
     name: 'square',
     userId: 1
   }

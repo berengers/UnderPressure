@@ -1,0 +1,30 @@
+.Button {
+  display: inline-block;
+  padding: 0.6rem 0.9rem;
+  border-radius: 6px;
+  font-weight: 500;
+  background-color: #e8e8e8;
+  cursor: pointer;
+  transition: all;
+  transition-duration: 0.2s;
+
+  &:hover {
+    background-color: #ffffff2e !important;
+  }
+
+  &--fullWidth {
+    display: block;
+  }
+
+  &--text {
+    background-color: unset;
+    &:hover {
+      color: black;
+      background-color: unset !important;
+    }
+  }
+
+  &--light {
+    color: white;
+  }
+}

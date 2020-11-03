@@ -1,0 +1,17 @@
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+:root {
+  --color-info: #1c4585;
+  --color-success: #0eb21e;
+  --color-alert: #ed4956;
+  --color-border: #dbdbdb;
+  --color-text: #ffffff;
+  --color-primary: #25282a;
+  --color-secondary: #1e2021;
+  --color-tertiary: #0f1011;
+
+  --size-topBar-height: 56px;
+}

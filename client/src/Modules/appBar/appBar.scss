@@ -1,0 +1,27 @@
+.AppBar {
+  position: sticky;
+  top: 0;
+  height: var(--size-topBar-height);
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  background-color: var(--color-primary);
+}
+
+.AppBar-link {
+  padding: 0 0.5rem;
+  color: #ffffff87;
+  transition: all;
+  transition-duration: 0.2s;
+
+  &--active,
+  &:hover {
+    color: var(--color-text);
+  }
+}
+
+.AppBar-separator {
+  color: var(--color-info);
+}

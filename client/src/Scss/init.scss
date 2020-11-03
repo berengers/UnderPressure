@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: unset;
+  text-decoration-line: none;
+
+  &:active {
+    color: unset;
+  }
+}
+
+button {
+  cursor: pointer;
+  outline: 0;
+}

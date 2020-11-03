@@ -1,0 +1,36 @@
+.CodeEditor {
+  display: flex;
+  height: 100vh;
+  background-color: var(--color-primary);
+
+  &--logged {
+    height: calc(100vh - var(--size-topBar-height));
+  }
+}
+
+.CodeEditor-sidebar {
+  width: 35%;
+  height: 100%;
+  padding: 1rem;
+}
+
+.CodeEditor-content {
+  width: 65%;
+  height: 100%;
+}
+
+.CodeEditor-editor {
+  height: 60%;
+  padding: 1rem 1rem 1rem 0;
+}
+
+.CodeEditor-asserts {
+  height: calc(40% - 50px);
+  padding: 0 1rem 1rem 0;
+}
+
+.CodeEditor-buttons {
+  height: 50px;
+  padding: 0 1rem;
+  text-align: right;
+}
