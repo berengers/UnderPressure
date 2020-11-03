@@ -2,23 +2,11 @@ import React from 'react'
 import _upperFirst from 'lodash/upperFirst'
 
 import './testElement.scss'
+import { TestInterface } from 'Pages/testList/testList'
 import Button from 'Lib/buttons/button/button'
 
-interface QuestionInterface {
-  uuid: number
-  testId: number
-  asserts: string
-  code?: string
-  instructions?: string
-  name: string
-  order: number
-}
-
 interface PropsInterface {
-  test: {
-    name: string
-    questions?: Array<QuestionInterface>
-  }
+  test: TestInterface
 }
 
 export default function TestElement({ test }: PropsInterface) {
@@ -34,13 +22,17 @@ export default function TestElement({ test }: PropsInterface) {
               color="var(--color-primary)"
               className="TestElement-question"
               fullWidth
-              key={question.uuid}
-              to={`/question/${question.uuid}`}
+              key={question.id}
+              to={`/test/${test.id}/question/${question.id}`}
             >
               <div className="TestElement-question-title">
                 {_upperFirst(question.name)}
               </div>
-              <div>Instructions: {question.instructions}</div>
+              {question.instructions && (
+                <div className="TestElement-question-instructions">
+                  Instructions: {question.instructions}
+                </div>
+              )}
             </Button>
           ))}
         </div>

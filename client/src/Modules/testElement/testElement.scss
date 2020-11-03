@@ -21,3 +21,12 @@
 .TestElement-question-title {
   font-weight: 500;
 }
+
+.TestElement-question-instructions {
+  max-width: 80%;
+  margin: 0 auto;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: center;
+}

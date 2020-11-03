@@ -33,4 +33,14 @@
   height: 50px;
   padding: 0 1rem;
   text-align: right;
+
+  & > * {
+    margin-left: 0.7rem;
+  }
+}
+
+.CodeEditor-title {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  background-color: var(--color-tertiary);
 }

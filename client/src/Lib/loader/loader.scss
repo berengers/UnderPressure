@@ -1,0 +1,18 @@
+.Loader {
+  text-align: center;
+
+  &.displayNone { display: none}
+}
+
+.Loader-imageContainer.buttonMode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: var(--size-border-radius-button);
+  background: rgba(255, 255, 255, .8);
+}
