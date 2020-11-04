@@ -4,7 +4,6 @@ import './testList.scss'
 import { useGetAPI } from 'Services/hook/api'
 import TestElement from 'Modules/testElement/testElement'
 import Loader from 'Lib/loader/loader'
-import Button from 'Lib/buttons/button/button'
 
 export interface TestInterface {
   id: number
@@ -36,9 +35,6 @@ export default function TestList() {
           </div>
         ))}
       </div>
-      <Button color="var(--color-info)" fullWidth to="/new_question">
-        + Add Test
-      </Button>
     </div>
   )
 }

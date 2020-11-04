@@ -20,7 +20,7 @@ function App() {
             {isLogged ? (
               <Switch>
                 <Route path="/shared">shared</Route>
-                <Route exact path="/new_question">
+                <Route exact path="/test/:testId/new_question">
                   <CodeEditor initMode />
                 </Route>
                 <Route path="/test/:testId/question/:questionId">

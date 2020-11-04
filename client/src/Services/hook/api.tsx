@@ -10,7 +10,8 @@ const baseUrl = 'http://localhost:4000/api/'
 
 export function useGetAPI<T>(
   url: string,
-  initialState: any = null
+  initialState: any = null,
+  cancelQuery = false
 ): [T, ParamsInterface] {
   const [data, setData] = useState<any>(initialState)
   const [isLoading, setIsLoading] = useState(false)
@@ -34,7 +35,9 @@ export function useGetAPI<T>(
       setIsLoading(false)
     }
 
-    fetchData()
+    if (!cancelQuery) {
+      fetchData()
+    }
   }, [])
 
   return [data, { isLoading, isError }]

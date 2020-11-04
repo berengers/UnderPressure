@@ -35,6 +35,14 @@ export default function TestElement({ test }: PropsInterface) {
               )}
             </Button>
           ))}
+
+          <Button
+            color="var(--color-info)"
+            fullWidth
+            to={`test/${test.id}/new_question`}
+          >
+            + Add Question
+          </Button>
         </div>
       )}
     </div>

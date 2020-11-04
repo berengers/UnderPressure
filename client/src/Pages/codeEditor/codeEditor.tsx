@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import _isEqual from 'lodash/isEqual'
 
 import './codeEditor.scss'
 import { useGetAPI, usePostAPI, usePutAPI } from 'Services/hook/api'
 import { UserContext } from 'Services/context/userContext'
 import Instructions from 'Modules/codeEditor/instructions/instructions'
+import TestsOutput from 'Modules/codeEditor/testsOutput/testsOutput'
 import Editor from 'Modules/codeEditor/editor/editor'
 import Asserts from 'Modules/codeEditor/asserts/asserts'
 import Button from 'Lib/buttons/button/button'
@@ -23,13 +25,16 @@ export default function CodeEditor({ initMode = false }: PropsInterface) {
   }>()
   const [question, { isLoading }] = useGetAPI<QuestionInterface>(
     `question/${questionId}`,
-    {}
+    {},
+    initMode
   )
   const [createQuestion] = usePostAPI('question')
   const [updateQuestion] = usePutAPI(`question/${questionId}`)
   const [asserts, setAsserts] = useState(question.asserts)
   const [code, setCode] = useState(question.code)
   const [instructions, setInstructions] = useState(question.instructions)
+  const [testResult, setTestResult] = useState<Array<[boolean, any, any]>>([])
+  const [errorEval, setErrorEval] = useState<string>()
 
   useEffect(() => {
     setAsserts(question.asserts)
@@ -53,6 +58,24 @@ export default function CodeEditor({ initMode = false }: PropsInterface) {
     }
   }
 
+  const runTests = () => {
+    setTestResult([])
+    setErrorEval('')
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const it = (result: any, expected: any) => {
+      const isEqual = _isEqual(result, expected)
+      setTestResult(arr => [...arr, [isEqual, result, expected]])
+    }
+
+    if (!code || !asserts) return
+
+    try {
+      eval(code + '\n' + asserts)
+    } catch (error) {
+      setErrorEval(error.message)
+    }
+  }
+
   if (!initMode && isLoading) return <Loader size="50" />
 
   return (
@@ -63,6 +86,7 @@ export default function CodeEditor({ initMode = false }: PropsInterface) {
           onChange={setInstructions}
           editMode={isLogged}
         />
+        <TestsOutput value={testResult} error={errorEval} />
       </div>
       <div className="CodeEditor-content">
         <div className="CodeEditor-editor">
@@ -74,6 +98,9 @@ export default function CodeEditor({ initMode = false }: PropsInterface) {
         <div className="CodeEditor-buttons">
           <Button color="var(--color-info)" light onClick={postQuestion}>
             Save question
+          </Button>
+          <Button color="var(--color-info)" light onClick={runTests}>
+            Run Tests
           </Button>
         </div>
       </div>

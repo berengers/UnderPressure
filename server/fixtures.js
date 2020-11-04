@@ -8,19 +8,11 @@ const users = [
 
 const tests = [
   {
-    name: 'double',
+    name: 'beginner',
     userId: 1
   },
   {
-    name: 'square',
-    userId: 1
-  },
-  {
-    name: 'square',
-    userId: 1
-  },
-  {
-    name: 'square',
+    name: 'intermediate',
     userId: 1
   }
 ]
@@ -47,35 +39,19 @@ const tokens = [{ token: 'tom_token', userId: 1 }]
 const questions = [
   {
     testId: 1,
-    asserts: 'asserts(4)',
-    code: 'function (value) {\n\n\n}',
+    asserts: "it(square(9), 3)\nit(square('25'), 5)",
+    code: 'function square (value) {\n\n\n}',
+    instructions: 'You have to return square value',
+    name: 'square',
+    order: 2
+  },
+  {
+    testId: 1,
+    asserts: "it(double(3), 6)\nit(double(10), 20)\nit(double('3'), 6)",
+    code: 'function double (value) {\n\n\n}',
     instructions: 'You have to return double value',
     name: 'double',
     order: 1
-  },
-  {
-    testId: 1,
-    asserts: 'asserts(4)',
-    code: 'function (value) {\n\n\n}',
-    instructions: 'You have to return double value',
-    name: 'square',
-    order: 3
-  },
-  {
-    testId: 1,
-    asserts: 'asserts(4)',
-    code: 'function (value) {\n\n\n}',
-    instructions: 'You have to return double value',
-    name: 'double',
-    order: 4
-  },
-  {
-    testId: 1,
-    asserts: 'asserts(4)',
-    code: 'function (value) {\n\n\n}',
-    instructions: 'You have to return double value',
-    name: 'square',
-    order: 2
   }
 ]
 

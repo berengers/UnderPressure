@@ -1,0 +1,36 @@
+.TestsOutput {
+  width: 100%;
+  height: 50%;
+  position: relative;
+  background: var(--color-secondary);
+  font-size: 1rem;
+
+  &--error {
+    background-color: var(--color-alert);
+  }
+}
+
+.TestsOutput-errorMessage {
+  padding: 0.6rem;
+}
+
+.TestOutput-element {
+  &--valid,
+  &--unvalid {
+    margin: 0.4rem 1rem 0;
+    padding: 0.2rem;
+    color: var(--color-primary);
+  }
+
+  &--valid {
+    background-color: var(--color-success);
+  }
+  &--unvalid {
+    background-color: var(--color-alert);
+  }
+}
+
+.TestOutput-value {
+  color: var(--color-tertiary);
+  font-weight: 700;
+}
