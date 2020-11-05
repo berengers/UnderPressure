@@ -8,7 +8,7 @@ import './editor.scss'
 
 interface PropsInterface {
   value?: string
-  onChange: Dispatch<SetStateAction<string | undefined>>
+  onChange: Dispatch<SetStateAction<string>>
 }
 
 export default function Editor({ value, onChange }: PropsInterface) {

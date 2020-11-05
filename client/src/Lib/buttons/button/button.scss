@@ -3,13 +3,14 @@
   padding: 0.6rem 0.9rem;
   border-radius: 6px;
   font-weight: 500;
-  background-color: #e8e8e8;
+  background-color: var(--color-primary-lighten);
+  color: white;
   cursor: pointer;
   transition: all;
   transition-duration: 0.2s;
 
   &:hover {
-    background-color: #ffffff2e !important;
+    filter: contrast(1.2) !important;
   }
 
   &--fullWidth {
@@ -17,15 +18,29 @@
     text-align: center;
   }
 
+  &--small {
+    transform: scale(0.7);
+  }
+
   &--text {
-    background-color: unset;
+    filter: contrast(1);
     &:hover {
       color: black;
-      background-color: unset !important;
+      filter: contrast(1) !important;
     }
   }
 
-  &--light {
-    color: white;
+  &--dark {
+    color: var(--color-tertiary);
+  }
+
+  &--disable {
+    opacity: 0.7;
+    color: #8f8f8f !important;
+    background-color: #474747 !important;
+    cursor: initial;
+    &:hover {
+      filter: contrast(1) !important;
+    }
   }
 }

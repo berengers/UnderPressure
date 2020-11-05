@@ -4,10 +4,16 @@
   position: relative;
   background: var(--color-secondary);
   font-size: 0.9rem;
+
+  & textarea:focus {
+    outline: none;
+  }
 }
 
 .Instructions-textarea {
-  height: 100%;
+  height: calc(
+    100% - var(--size-codeEditor-title) - var(--size-codeEditor-questionName)
+  );
   width: 100%;
   padding: 1rem;
   resize: none;

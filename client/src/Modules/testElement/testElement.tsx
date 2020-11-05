@@ -7,13 +7,24 @@ import Button from 'Lib/buttons/button/button'
 
 interface PropsInterface {
   test: TestInterface
+  toggleModal: (number: number) => void
 }
 
-export default function TestElement({ test }: PropsInterface) {
+export default function TestElement({ test, toggleModal }: PropsInterface) {
   return (
     <div className="TestElement">
       <div className="TestElement-header">
         <div>{_upperFirst(test.name)}</div>
+        {test.questions && test.questions.length > 0 && (
+          <img
+            className="TestElement-shareImage"
+            onClick={() => {
+              toggleModal(test.id)
+            }}
+            src={`${process.env.REACT_APP_BASE_URL}/icons/share.png`}
+            width="30px"
+          />
+        )}
       </div>
       {test.questions && (
         <div className="TestElement-questionsContainer">
@@ -30,7 +41,7 @@ export default function TestElement({ test }: PropsInterface) {
               </div>
               {question.instructions && (
                 <div className="TestElement-question-instructions">
-                  Instructions: {question.instructions}
+                  {question.instructions}
                 </div>
               )}
             </Button>

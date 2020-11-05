@@ -9,7 +9,8 @@ function login(req, res) {
       res.sendStatus(401)
     } else {
       AuthToken.create({ token: uuidv4(), userId: user.id }).then(authToken =>
-        res.json({ token: authToken.token })
+        // TODO - remove password to the user
+        res.json({ token: authToken.token, user })
       )
     }
   })

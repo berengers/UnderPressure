@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 
 interface ParamsInterface {
   isLoading: boolean
-  isError: boolean
+  error: string
 }
 
 const baseUrl = 'http://localhost:4000/api/'
@@ -15,11 +16,11 @@ export function useGetAPI<T>(
 ): [T, ParamsInterface] {
   const [data, setData] = useState<any>(initialState)
   const [isLoading, setIsLoading] = useState(false)
-  const [isError, setIsError] = useState(false)
+  const [error, setError] = useState('')
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsError(false)
+      setError('')
       setIsLoading(true)
 
       try {
@@ -29,7 +30,7 @@ export function useGetAPI<T>(
 
         setData(result.data || null)
       } catch (error) {
-        setIsError(true)
+        setError(error.message)
       }
 
       setIsLoading(false)
@@ -40,21 +41,23 @@ export function useGetAPI<T>(
     }
   }, [])
 
-  return [data, { isLoading, isError }]
+  return [data, { isLoading, error }]
 }
 
 export function usePostAPI<T>(
   url: string,
-  initialState: any = null
+  initialState: any = null,
+  redirect?: string
 ): [any, T, ParamsInterface] {
   const [data, setData] = useState<any>(initialState)
   const [body, setBody] = useState()
   const [isLoading, setIsLoading] = useState(false)
-  const [isError, setIsError] = useState(false)
+  const [error, setError] = useState('')
+  const history = useHistory()
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsError(false)
+      setError('')
       setIsLoading(true)
 
       try {
@@ -62,12 +65,16 @@ export function usePostAPI<T>(
           headers: { 'x-authenticate': localStorage.getItem('token') }
         })
 
-        setData(result.data || null)
+        setData(() => result.data || null)
       } catch (error) {
-        setIsError(true)
+        setError(error.message)
       }
 
       setIsLoading(false)
+
+      if (redirect) {
+        history.push(redirect)
+      }
     }
 
     if (body) {
@@ -75,21 +82,57 @@ export function usePostAPI<T>(
     }
   }, [body])
 
-  return [setBody, data, { isLoading, isError }]
+  return [setBody, data, { isLoading, error }]
+}
+
+export function useDeleteAPI<T>(
+  initialState: any = null
+): [any, T, ParamsInterface] {
+  const [url, setUrl] = useState('')
+  const [data, setData] = useState<any>(initialState)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setError('')
+      setIsLoading(true)
+
+      try {
+        const result = await axios.delete(baseUrl + url, {
+          headers: { 'x-authenticate': localStorage.getItem('token') }
+        })
+
+        setData(result.data || null)
+      } catch (error) {
+        setError(error.message)
+      }
+
+      setIsLoading(false)
+    }
+
+    if (url) {
+      fetchData()
+    }
+  }, [])
+
+  return [setUrl, data, { isLoading, error }]
 }
 
 export function usePutAPI<T>(
   url: string,
-  initialState: any = null
+  initialState: any = null,
+  redirect?: string
 ): [any, T, ParamsInterface] {
   const [data, setData] = useState<any>(initialState)
   const [body, setBody] = useState()
   const [isLoading, setIsLoading] = useState(false)
-  const [isError, setIsError] = useState(false)
+  const [error, setError] = useState('')
+  const history = useHistory()
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsError(false)
+      setError('')
       setIsLoading(true)
 
       try {
@@ -99,10 +142,14 @@ export function usePutAPI<T>(
 
         setData(result.data || null)
       } catch (error) {
-        setIsError(true)
+        setError(error.message)
       }
 
       setIsLoading(false)
+
+      if (redirect) {
+        history.push(redirect)
+      }
     }
 
     if (body) {
@@ -110,5 +157,5 @@ export function usePutAPI<T>(
     }
   }, [body])
 
-  return [setBody, data, { isLoading, isError }]
+  return [setBody, data, { isLoading, error }]
 }

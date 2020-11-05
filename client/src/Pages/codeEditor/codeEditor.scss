@@ -6,12 +6,33 @@
   &--logged {
     height: calc(100vh - var(--size-topBar-height));
   }
+
+  & textarea:focus {
+    outline: none;
+  }
 }
 
 .CodeEditor-sidebar {
   width: 35%;
   height: 100%;
   padding: 1rem;
+}
+
+.CodeEditor-inputQuestionNameContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--size-codeEditor-questionName);
+}
+
+.CodeEditor-inputQuestionName {
+  width: 350px;
+  max-width: 90%;
+  padding: 0.3rem 0.7rem;
+  background-color: var(--color-secondary);
+  border-color: var(--color-tertiary);
+  font-size: 1.3rem;
+  color: white;
 }
 
 .CodeEditor-content {
@@ -40,6 +61,7 @@
 }
 
 .CodeEditor-title {
+  height: var(--size-codeEditor-title);
   padding: 0.6rem 1rem;
   font-size: 1rem;
   background-color: var(--color-tertiary);

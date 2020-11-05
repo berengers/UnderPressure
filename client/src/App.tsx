@@ -3,9 +3,11 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import { UserContext, CreateUserContext } from './Services/context/userContext'
 import './App.scss'
+import Login from 'Pages/login/login'
 import TestList from 'Pages/testList/testList'
 import AppBar from 'Modules/appBar/appBar'
 import CodeEditor from 'Pages/codeEditor/codeEditor'
+import Shared from 'Pages/shared/shared'
 
 function App() {
   const userContext = CreateUserContext()
@@ -19,7 +21,9 @@ function App() {
           <div className="App-container">
             {isLogged ? (
               <Switch>
-                <Route path="/shared">shared</Route>
+                <Route path="/shared">
+                  <Shared />
+                </Route>
                 <Route exact path="/test/:testId/new_question">
                   <CodeEditor initMode />
                 </Route>
@@ -31,7 +35,14 @@ function App() {
                 </Route>
               </Switch>
             ) : (
-              'login page'
+              <Switch>
+                <Route path="/test/:uuid/:page">
+                  <CodeEditor playerMode />
+                </Route>
+                <Route path="/">
+                  <Login />
+                </Route>
+              </Switch>
             )}
           </div>
         </Router>

@@ -14,11 +14,16 @@ async function createQuestion(req, res) {
     res.json('You must have to provide a test id')
   }
 
+  if (!req.body.asserts) {
+    res.statusCode = 400
+    res.json('You must have to provide asserts')
+  }
+
   if (!req.body.order) {
     const lastOrder = await Question.max('order', {
       where: { testId: req.body.testId }
     })
-    req.body.order = lastOrder + 1
+    req.body.order = (lastOrder || -1) + 1
   }
 
   const questionEntity = await Question.create({ ...req.body })

@@ -1,0 +1,43 @@
+.Login {
+  display: flex;
+  justify-content: center;
+  margin-top: 20%;
+  background-color: var(--color-primary);
+}
+
+.Login form {
+  width: 540px;
+  max-width: 90%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 6rem 0;
+  border-radius: 20px;
+  text-align: center;
+  background-color: var(--color-secondary);
+}
+
+.Login input {
+  width: 350px;
+  max-width: 95%;
+  padding: 0.8rem 1rem;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: var(--color-tertiary);
+  font-size: 1rem;
+  color: white;
+  background-color: var(--color-primary);
+}
+
+.Login button {
+  width: 350px;
+  max-width: 95%;
+  margin-top: 1.4rem;
+  padding: 0.4rem;
+  font-size: 1.1rem;
+  background-color: var(--color-info);
+  color: white;
+  border-style: none;
+  border-radius: 6px;
+}

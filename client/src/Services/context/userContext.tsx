@@ -3,16 +3,8 @@ import React, { useState } from 'react'
 interface UserContextInterface {
   isLogged: boolean
   userId: number
-  username: string
-  name: string
-  profilePicture?: string
-  setUserContext: (
-    isLogged: boolean,
-    userId?: number,
-    username?: string,
-    name?: string,
-    profilePicture?: string
-  ) => void
+  email: string
+  setUserContext: (isLogged: boolean, userId?: number, email?: string) => void
 }
 
 export const CreateUserContext = (): UserContextInterface => {
@@ -22,38 +14,26 @@ export const CreateUserContext = (): UserContextInterface => {
   const [userId, setUserId] = useState(
     contextLocal ? contextLocal.userId : null
   )
-  const [username, setUsername] = useState(
-    contextLocal ? contextLocal.username : ''
-  )
-  const [name, setName] = useState(contextLocal ? contextLocal.name : '')
-  const [profilePicture, setProfilePicture] = useState(
-    contextLocal ? contextLocal.profilePicture : ''
-  )
+  const [email, setEmail] = useState(contextLocal ? contextLocal.email : '')
 
   const setUserContext = (
     isLogged: boolean,
     userId?: number,
-    username?: string,
-    name?: string,
-    profilePicture?: string
+    email?: string
   ) => {
     setIsLogged(isLogged)
 
     if (isLogged) {
       if (userId) setUserId(userId)
-      if (username) setUsername(username)
-      if (name) setName(name)
-      if (profilePicture) setProfilePicture(profilePicture)
+      if (email) setEmail(email)
 
       localStorage.setItem(
         'userContext',
-        JSON.stringify({ isLogged, userId, username, name, profilePicture })
+        JSON.stringify({ isLogged, userId, email })
       )
     } else {
       setUserId(null)
-      setUsername('')
-      setName('')
-      setProfilePicture('')
+      setEmail('')
       localStorage.removeItem('userContext')
     }
   }
@@ -61,9 +41,7 @@ export const CreateUserContext = (): UserContextInterface => {
   return {
     isLogged,
     userId,
-    username,
-    name,
-    profilePicture,
+    email,
     setUserContext
   }
 }

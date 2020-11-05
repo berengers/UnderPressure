@@ -20,6 +20,9 @@
     margin: 0.4rem 1rem 0;
     padding: 0.2rem;
     color: var(--color-primary);
+    &:first-child {
+      margin-top: 1rem;
+    }
   }
 
   &--valid {

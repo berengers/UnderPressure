@@ -39,8 +39,8 @@ const tokens = [{ token: 'tom_token', userId: 1 }]
 const questions = [
   {
     testId: 1,
-    asserts: "it(square(9), 3)\nit(square('25'), 5)",
-    code: 'function square (value) {\n\n\n}',
+    asserts: "it(square(3), 9)\nit(square('5'), 25)",
+    code: 'function square (value) {\n    \n    \n}',
     instructions: 'You have to return square value',
     name: 'square',
     order: 2
@@ -48,10 +48,20 @@ const questions = [
   {
     testId: 1,
     asserts: "it(double(3), 6)\nit(double(10), 20)\nit(double('3'), 6)",
-    code: 'function double (value) {\n\n\n}',
+    code: 'function double (value) {\n    \n    \n}',
     instructions: 'You have to return double value',
     name: 'double',
     order: 1
+  },
+  {
+    testId: 1,
+    asserts:
+      "it(moveZeros([1,2,0,1,0,1,0,3,0,1]), [ 1, 2, 1, 1, 3, 1, 0, 0, 0, 0 ])\nit(moveZeros([1,2,0,1,0,1,'0',3,1]), [ 1, 2, 1, 1, 3, 1, 0, 0, 0 ])",
+    code: 'const moveZeros = (arr) => {\n    // TODO: Program me\n}',
+    instructions:
+      'Write an algorithm that takes an array and moves all of the zeros to the end, preserving the order of the other elements.\n\n\nmoveZeros([false,1,0,1,2,0,1,3,"a"]) //returns[false,1,1,2,1,3,"a",0,0]',
+    name: 'double',
+    order: 3
   }
 ]
 

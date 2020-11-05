@@ -2,6 +2,12 @@
 
 ![infrastructure schema](infra.png)
 
+## Prerequisits
+
+- Docker
+- Docker-compose
+- Nodejs and NPM
+
 ## Run full stack
 
 ```sh
@@ -20,3 +26,14 @@ npm run startServer
 cd client
 npm start
 ```
+
+## To login
+
+```
+email: tom@tom.com
+password: password
+```
+
+## Postman
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/1e8fc4f77372695bf187)

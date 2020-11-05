@@ -1,9 +1,20 @@
 .TestElement-header {
+  display: flex;
+  justify-content: space-between;
   background-color: var(--color-secondary);
   padding: 0.8rem 1rem;
   border-radius: 7px;
   font-size: 1.3rem;
   font-weight: 600;
+}
+
+.TestElement-shareImage {
+  filter: invert(1);
+  cursor: pointer;
+
+  &:hover {
+    filter: contrast();
+  }
 }
 
 .TestElement-questionsContainer {

@@ -1,0 +1,19 @@
+.Shared {
+  width: 680px;
+  max-width: 95%;
+  margin: 0 auto;
+  padding-top: 3rem;
+}
+
+.Shared-testRun {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 6px;
+  background-color: var(--color-secondary);
+  font-size: 1rem;
+  line-height: 1.8rem;
+
+  span {
+    margin-right: 2rem;
+  }
+}

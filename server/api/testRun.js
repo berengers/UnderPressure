@@ -1,7 +1,7 @@
 const uuidv4 = require('uuid/v4')
 
 const { logged } = require('./utils')
-const { Test, TestRun } = require('../models/db')
+const { Test, TestRun, Question } = require('../models/db')
 
 async function getTestsRun(req, res) {
   const testRunEntity = await TestRun.findAll({
@@ -13,8 +13,34 @@ async function getTestsRun(req, res) {
 
 async function getTestRun(req, res) {
   const testRunEntity = await TestRun.findOne({
+    include: {
+      model: Test,
+      include: {
+        model: Question
+      }
+    },
+    order: [[Test, Question, 'order', 'ASC']],
     where: { uuid: req.params.uuid }
   })
+
+  if (!testRunEntity) {
+    res.statusCode = 404
+    res.json()
+  }
+
+  if (testRunEntity.startedDate) {
+    const limitDate =
+      new Date(testRunEntity.startedDate).getTime() +
+      testRunEntity.maxTimeToComplete
+
+    if (limitDate < new Date().getTime()) {
+      res.statusCode = 500
+      res.json('Time limit exceeded')
+    }
+  } else {
+    testRunEntity.startedDate = new Date()
+    testRunEntity.save()
+  }
 
   res.json(testRunEntity)
 }
@@ -52,7 +78,7 @@ async function updateTestRunEntity(testRunEntity, testRunInput) {
 }
 
 async function updateTestRun(req, res) {
-  const { testRun: testRunInput } = req.body
+  const { ...testRunInput } = req.body
 
   const testRunEntity = await TestRun.findOne({
     where: { uuid: req.params.uuid }
@@ -63,8 +89,8 @@ async function updateTestRun(req, res) {
 
 module.exports = (app, prefix) => {
   app.get(prefix, logged(getTestsRun))
-  app.get(`${prefix}/:uuid`, logged(getTestRun))
+  app.get(`${prefix}/:uuid`, getTestRun)
   app.post(prefix, logged(createTestRun))
   app.delete(`${prefix}/:uuid`, logged(deleteTestRun))
-  app.put(`${prefix}/:uuid`, logged(updateTestRun))
+  app.put(`${prefix}/:uuid`, updateTestRun)
 }

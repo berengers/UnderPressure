@@ -7,9 +7,11 @@ interface ButtonInterface {
   children: ReactNode
   className?: string
   color?: string
+  disable?: boolean
   fullWidth?: boolean
-  light?: boolean
+  dark?: boolean
   onClick?: () => void
+  small?: boolean
   text?: boolean
   to?: string
 }
@@ -18,20 +20,29 @@ export default function Button({
   children,
   className,
   color = '',
-  fullWidth,
-  light,
+  disable = false,
+  fullWidth = false,
+  dark = false,
   onClick,
-  text,
+  small = false,
+  text = false,
   to
 }: ButtonInterface) {
+  const clickButton = () => {
+    if (disable) return
+    if (onClick) onClick()
+  }
+
   return (
-    <Link to={to || '#'} onClick={onClick}>
+    <Link onClick={clickButton} to={to || '#'}>
       <div
         className={`
         Button
         ${className} ${fullWidth ? 'Button--fullWidth' : ''}
         ${text ? 'Button--text' : ''}
-        ${light ? 'Button--light' : ''}
+        ${dark ? 'Button--dark' : ''}
+        ${disable ? 'Button--disable' : ''}
+        ${small ? 'Button--small' : ''}
         `}
         style={{ backgroundColor: color }}
       >

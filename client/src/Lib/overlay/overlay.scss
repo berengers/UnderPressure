@@ -1,0 +1,27 @@
+.Overlay-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 50;
+  background: rgba(0, 0, 0, .5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Overlay-transition-enter {
+  opacity: 0;
+  transform: scale(1.3);
+}
+
+.Overlay-transition-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: 80ms ease-in;
+}
+
+.Overlay-transition-exit, .Overlay-transition-exit-active {
+  opacity: 0;
+}
