@@ -10,5 +10,8 @@
     "restartStack": "npm run stopStack && npm run startStack"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^6.4.0"
+  }
 }
