@@ -1,5 +1,8 @@
 name: End-to-end tests
 on: [pull_request]
+defaults:
+  run:
+    working-directory: client
 jobs:
   cypress-run:
     runs-on: ubuntu-16.04
@@ -10,5 +13,3 @@ jobs:
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v2
-        with:
-          project: ../../client
