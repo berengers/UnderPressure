@@ -1,5 +1,5 @@
 {
   "videoUploadOnPasses": false,
-  "video": true,
+  "video": false,
   "videoCompression": false
 }
