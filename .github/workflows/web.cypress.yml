@@ -13,3 +13,4 @@ jobs:
         with:
           working-directory: client
           browser: chrome
+          start: yarn start
