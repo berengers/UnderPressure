@@ -21,7 +21,7 @@ jobs:
         run: |
           npm install
           node fixtures
-          node app.js
+          npx pm2 start app.js
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress tests on chrome
