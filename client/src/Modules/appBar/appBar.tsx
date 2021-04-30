@@ -16,7 +16,7 @@ export default function AppBar() {
   }
 
   return (
-    <div className="AppBar">
+    <div className="AppBar" data-e2e="app-bar-container">
       <div>
         <NavLink
           className="AppBar-link"

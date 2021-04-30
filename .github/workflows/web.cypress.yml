@@ -4,6 +4,10 @@ jobs:
   cypress-run:
     runs-on: ubuntu-16.04
     steps:
+      - name: Start stack
+        run: npm run resetStack
+      - name: Start dev server
+        run: npm run startDevServer
       - name: Checkout
         uses: actions/checkout@v2
       # Install NPM dependencies, cache them correctly
