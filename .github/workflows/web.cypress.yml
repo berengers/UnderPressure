@@ -5,6 +5,7 @@ jobs:
     runs-on: ubuntu-16.04
     steps:
       - name: Start stack
+        uses: cypress-io/github-action@v2
         run: |
           ls
           cat package.json
