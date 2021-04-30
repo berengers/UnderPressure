@@ -6,12 +6,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      # - name: Setup node
-      #   uses: actions/setup-node@v2
-      #   with:
-      #     node-version: "14"
       - name: Start stack
-        run: npm run resetStack
+        run: npm run buildStack && npm run startStack
       - name: Start dev server
         working-directory: server
         run: |

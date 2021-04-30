@@ -9,8 +9,7 @@
     "stopStack": "docker-compose -f docker-compose.stack.yaml down",
     "restartStack": "npm run stopStack && npm run startStack",
     "buildStack": "docker-compose -f docker-compose.stack.yaml build",
-    "resetStack": "npm run buildStack && npm run restartStack",
-    "startCI": "npm run resetStack && npm run startDevServer"
+    "resetStack": "npm run buildStack && npm run restartStack"
   },
   "author": "",
   "license": "ISC",
