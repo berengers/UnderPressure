@@ -4,15 +4,22 @@ jobs:
   cypress-run:
     runs-on: ubuntu-16.04
     steps:
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
       - name: Start stack
-        uses: actions/checkout@v2
         run: |
           ls
           cat package.json
           docker-compose --help
           npm run resetStack
       - name: Start dev server
-        run: npm run startDevServer
+        working-directory: server
+        run: |
+          npm install
+          node fixtures
+          node app.js
       - name: Checkout
         uses: actions/checkout@v2
       # Install NPM dependencies, cache them correctly
