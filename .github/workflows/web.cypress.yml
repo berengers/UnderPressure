@@ -10,7 +10,6 @@ jobs:
           node-version: "14"
       - name: Start stack
         run: |
-          cat package.json
           docker-compose --help
           npm run resetStack
       - name: Start dev server
