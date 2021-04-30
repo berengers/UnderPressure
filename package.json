@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "startStack": "docker-compose -f docker-compose.stack.yaml up -d",
-    "startServer": "cd ./server && node fixtures.js && nodemon app.js",
+    "startDevServer": "cd ./server && npm run devServer",
     "stopStack": "docker-compose -f docker-compose.stack.yaml down",
     "restartStack": "npm run stopStack && npm run startStack",
     "buildStack": "docker-compose -f docker-compose.stack.yaml build",

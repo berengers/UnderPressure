@@ -46,16 +46,20 @@ export default function Login() {
           placeholder="email"
           type="email"
           value={email}
+          data-e2e="input-email"
         />
         <br />
         <input
           name="password"
           onChange={handleChange}
           placeholder="password"
-          type="âssword"
+          type="password"
           value={password}
+          data-e2e="input-password"
         />
-        <button type="submit">Login</button>
+        <button type="submit" data-e2e="button-login">
+          Login
+        </button>
       </form>
     </div>
   )
