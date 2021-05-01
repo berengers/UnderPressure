@@ -5,10 +5,15 @@
   "main": "index.js",
   "scripts": {
     "startStack": "docker-compose -f docker-compose.stack.yaml up -d",
-    "startServer": "cd ./server && node fixtures.js && nodemon app.js",
+    "startDevServer": "cd ./server && npm run devServer",
     "stopStack": "docker-compose -f docker-compose.stack.yaml down",
-    "restartStack": "npm run stopStack && npm run startStack"
+    "restartStack": "npm run stopStack && npm run startStack",
+    "buildStack": "docker-compose -f docker-compose.stack.yaml build",
+    "resetStack": "npm run buildStack && npm run restartStack"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^6.4.0"
+  }
 }

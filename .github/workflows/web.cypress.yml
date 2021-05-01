@@ -1,0 +1,25 @@
+name: End-to-end tests
+on: [pull_request]
+jobs:
+  cypress-run:
+    runs-on: ubuntu-16.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Start stack
+        run: npm run buildStack && npm run startStack
+      - name: Start dev server
+        working-directory: server
+        run: |
+          npm install
+          node fixtures
+          npx pm2 start app.js
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress tests on chrome
+        uses: cypress-io/github-action@v2
+        with:
+          working-directory: client
+          browser: chrome
+          build: npm run build
+          start: npm start

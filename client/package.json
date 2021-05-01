@@ -29,6 +29,7 @@
   "devDependencies": {
     "@types/react-router-dom": "^5.1.6",
     "@typescript-eslint/parser": "^4.6.0",
+    "cypress": "^6.4.0",
     "eslint": "^7.12.1",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-prettier": "^6.15.0",
@@ -40,6 +41,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:e2e": "cypress run",
     "eject": "react-scripts eject",
     "format": "prettier --write src/**/*.ts{,x}"
   },
